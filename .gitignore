@@ -102,6 +102,7 @@ ENV/
 
 # Data
 *.tab.gz
+!data/protein/test
 data/
 local_data/
 weights/
@@ -115,4 +116,3 @@ logs/
 
 # results
 results/
-!data/protein/test
