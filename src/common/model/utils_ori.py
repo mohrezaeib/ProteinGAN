@@ -33,6 +33,7 @@ def get_batches(fn, data_dir, batch_size, shuffle_buffer_size=100000, running_mo
     print(upsampling_factor)
     filename_dataset = tf.data.Dataset.from_tensor_slices((filenames, upsampling_factor))
     filename_dataset = filename_dataset.shuffle(len(filenames))
+    print(f"TFRECORD file content: {filename_dataset.enumerate()}")
     prefetch = max(int(batch_size / len(filenames)), 1)
 
     # Repeat data in the file for unlimited number. This solves class imbalance problem.
