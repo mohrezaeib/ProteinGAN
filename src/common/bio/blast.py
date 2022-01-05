@@ -3,7 +3,7 @@ import subprocess
 
 from Bio import SeqIO
 from Bio.Blast import NCBIWWW
-from Bio.Blast import NCBIXML
+from Bio.Blast import NCBIXMLs
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 

@@ -115,3 +115,4 @@ logs/
 
 # results
 results/
+!data/protein/test

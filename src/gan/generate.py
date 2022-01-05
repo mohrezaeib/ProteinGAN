@@ -5,7 +5,6 @@ from __future__ import print_function
 
 import os
 import time
-
 import tensorflow as tf
 from absl import flags
 from bio.amino_acid import sequences_to_fasta
