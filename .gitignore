@@ -103,7 +103,7 @@ ENV/
 # Data
 *.tab.gz
 !data/protein/test
-data/
+#data/
 local_data/
 weights/
 notebooks/MNIST_data/
