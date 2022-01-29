@@ -34,20 +34,27 @@ class Sequence(object):
         if strip_zeros:
             sequence = sequence.replace("0", "")
         header = ""
+        prefix =""
+        print("id_to_enzyme_class" ,id_to_enzyme_class)
+        print("self.label" ,self.label)
 
-        if self.label is not None:
-            header = "class: {}".format(id_to_enzyme_class[str(self.label)])
-        if self.d_score is not None:
-            header = "{} Discriminator score: {}".format(header, self.d_score)
-        if self.similarity is not None:
-            header = "{} Similarity: {}".format(header, self.similarity)
-        if self.evalue is not None:
-            header = "{} E.value: {}".format(header, self.evalue)
-        if self.identity is not None:
-            header = "{} Identity: {}".format(header, self.identity)
-        if escape:
-            prefix = "\>"
-        else:
-            prefix = ">"
+
+        try:
+            if self.label is not None:
+                header = "class: {}".format(id_to_enzyme_class[str(self.label)])
+            if self.d_score is not None:
+                header = "{} Discriminator score: {}".format(header, self.d_score)
+            if self.similarity is not None:
+                header = "{} Similarity: {}".format(header, self.similarity)
+            if self.evalue is not None:
+                header = "{} E.value: {}".format(header, self.evalue)
+            if self.identity is not None:
+                header = "{} Identity: {}".format(header, self.identity)
+            if escape:
+                prefix = "\>"
+            else:
+                prefix = ">"
+        except Exception as e :
+            print(e)
 
         return "{}{} {} {}{}".format(prefix, self.id, header, os.linesep, sequence)
