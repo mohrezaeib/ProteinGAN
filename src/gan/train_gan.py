@@ -26,6 +26,7 @@ def main(_, is_test=False, debug_cli=False, debug_ui=False):
         logdir = setup_logdir(FLAGS, properties)
         noise = tf.random.truncated_normal([FLAGS.batch_size, 128], stddev=0.5, dtype=tf.float32, name='noise')
         model = get_model(FLAGS, properties, logdir, noise)
+        print(model)
         print_run_meta_data(FLAGS)
         # Adding all meta data about the model before starting
         add_model_metadata(logdir, os.path.join(os.path.dirname(__file__), FLAGS.model_type), FLAGS, properties)
@@ -42,7 +43,7 @@ def main(_, is_test=False, debug_cli=False, debug_ui=False):
                                 discriminator_train_op=model.d_optim,
                                 global_step_inc_op=model.increment_global_step)
         train_steps = GANTrainSteps(FLAGS.g_step, FLAGS.d_step)
-
+        print(model)
         if is_test:
             return graph
         else:
