@@ -31,12 +31,11 @@ environment.yml contains all the dependencies required in order to run ProteinGA
 export PYTHONPATH={path_to_repository}/src:{path_to_repository}/src/common:$PYTHONPATH
 ```
 
-export PYTHONPATH=/home/mohre/D/Research/templates/ProteinGAN//src:/home/mohre/D/Research/templates/ProteinGAN//src/common:$PYTHONPATH
+export PYTHONPATH=/home/mohre/D/Research/templates/ProteinGAN/src:/home/mohre/D/Research/templates/ProteinGAN/src/common:$PYTHONPATH
 
-additional resource at 
+additional resource at
 
 https://zenodo.org/record/4068040
-
 
 ## Data for training
 
