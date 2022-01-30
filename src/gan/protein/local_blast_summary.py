@@ -36,6 +36,7 @@ class LocalBlastSummary(BlastSummary):
 
     def get_stats(self, batch_size, similarities, name, f):
         avg = np.array(similarities).sum() / batch_size
+        print('Line 39 similarity', similarities)
         best_value = f(similarities)
         self.add_scalar("Blast/{}".format(name), avg)
         return avg, best_value
