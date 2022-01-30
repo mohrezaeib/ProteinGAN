@@ -54,9 +54,10 @@ class Sequence(object):
                 prefix = "\>"
             else:
                 prefix = ">"
-        except Exception as e :
-            print("An Error happened during get_seq_in_fasta:", e.args,e )
+        except Exception as error :
+            print("An Error happened during get_seq_in_fasta:", error.args,error , type(error)  )
             print(f"id_to_enzyme_class {id_to_enzyme_class}\n, sequence: {sequence} ")
             print(f"label {self.label}\n, identity: {self.identity} ")
+            print(f"result {prefix, self.id, header, os.linesep, sequence} ")
 
         return "{}{} {} {}{}".format(prefix, self.id, header, os.linesep, sequence)
