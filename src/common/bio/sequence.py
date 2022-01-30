@@ -41,7 +41,8 @@ class Sequence(object):
 
         try:
             if self.label is not None:
-                header = "class: {}".format(id_to_enzyme_class[str(self.label)])
+                # header = "class: {}".format(id_to_enzyme_class[str(self.label)])
+                pass
             if self.d_score is not None:
                 header = "{} Discriminator score: {}".format(header, self.d_score)
             if self.similarity is not None:
