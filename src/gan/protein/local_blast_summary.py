@@ -24,9 +24,9 @@ class LocalBlastSummary(BlastSummary):
         self.add_updated_text_to_tensorboard(sequences)
 
     def print_blast_results(self, sequences, fasta, type):
-        print("print_blast_results", sequences, fasta, type)
         result, err = get_local_blast_results(self._summary_writer.get_logdir(), self.db_path+"_"+type, fasta)
         sequences, evalues, similarities, identities = update_sequences_with_blast_results(result, sequences)
+        print("print_blast_results:get_stats line 30 ", len(sequences), similarities, type)
         avg_similarities, s_max = self.get_stats(len(sequences), similarities, "{}/BLOMSUM45".format(type), np.max)
         avg_evalues, e_min = self.get_stats(len(evalues), evalues, "{}/Evalue".format(type), np.min)
         avg_identities, i_max = self.get_stats(len(identities), identities, "{}/Identity".format(type), np.max)

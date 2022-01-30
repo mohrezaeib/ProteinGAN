@@ -35,8 +35,8 @@ class Sequence(object):
             sequence = sequence.replace("0", "")
         header = ""
         prefix =""
-        print("id_to_enzyme_class" ,id_to_enzyme_class)
-        print("self.label" ,self.label)
+        # print("id_to_enzyme_class" ,id_to_enzyme_class)
+        # print("self.label" ,self.label)
 
 
         try:
@@ -55,6 +55,6 @@ class Sequence(object):
             else:
                 prefix = ">"
         except Exception as e :
-            print(e)
+            print("An Error happened during get_seq_in_fasta:", e)
 
         return "{}{} {} {}{}".format(prefix, self.id, header, os.linesep, sequence)
