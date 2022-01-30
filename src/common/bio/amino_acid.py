@@ -109,6 +109,7 @@ def numpy_seqs_to_fasta(sequences, id_to_enzyme_class, labels=None, d_scores=Non
       array of strings with sequences and additional information
 
     """
+    print("id_to_enzyme_class" ,id_to_enzyme_class )
     seqs = get_protein_sequences(sequences, labels, d_scores)
     return sequences_to_fasta(seqs, id_to_enzyme_class, True, strip_zeros)
 
