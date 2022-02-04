@@ -35,8 +35,8 @@ class Sequence(object):
             sequence = sequence.replace("0", "")
         header = ""
         prefix =""
-        print("id_to_enzyme_class" ,id_to_enzyme_class)
-        print("self.label" ,self.label)
+        # print("id_to_enzyme_class" ,id_to_enzyme_class)
+        # print("self.label" ,self.label)
 
 
         try:
@@ -60,6 +60,6 @@ class Sequence(object):
             print(f"id_to_enzyme_class {id_to_enzyme_class}\n, sequence: {sequence} ")
             print(f"label {self.label}\n, identity: {self.identity} ")
             print(f"result {prefix, self.id, header, os.linesep, sequence} ")
-        print(f"get_seq_in_fasta result {prefix, self.id, header, os.linesep, sequence} ")
+        # print(f"get_seq_in_fasta result {prefix, self.id, header, os.linesep, sequence} ")
 
         return "{}{} {} {}{}".format(prefix, self.id, header, os.linesep, sequence)
