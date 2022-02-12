@@ -62,4 +62,5 @@ class Sequence(object):
             print(f"result {prefix, self.id, header, os.linesep, sequence} ")
         print(f"get_seq_in_fasta result {prefix, self.id, header, os.linesep, sequence} ")
 
-        return "{}{} {} {}{}".format(prefix, self.id, header, os.linesep, sequence)
+        # return "{}{} {} {}{}".format(prefix, self.id, header, os.linesep, sequence)
+        return "{}1.1.1.37_{} {}{}".format(prefix, self.id, os.linesep, sequence)
