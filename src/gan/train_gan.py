@@ -34,6 +34,7 @@ def main(_, is_test=False, debug_cli=False, debug_ui=False):
         # We set allow_soft_placement to be True because Saver for the DCGAN model gets misplaced on the GPU.
         session_config = tf.ConfigProto(allow_soft_placement=True, log_device_placement=False)
         session_config.gpu_options.allow_growth = True
+        
         hooks = get_hooks(debug_cli, debug_ui)
         model_hooks = get_specific_hooks(FLAGS, logdir, properties)
         if hasattr(FLAGS, "static_embedding") and not FLAGS.static_embedding:
