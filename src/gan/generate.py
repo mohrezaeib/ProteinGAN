@@ -78,4 +78,5 @@ def print_stats(stats, n_seqs):
 
 
 if __name__ == '__main__':
+    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
     tf.app.run()
