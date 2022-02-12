@@ -61,9 +61,9 @@ def get_generated_seqs(model):
 
 
 if __name__ == '__main__':
-    config = tf.compat.v1.ConfigProto()
-    config.gpu_options.per_process_gpu_memory_fraction = 0.9
-    config.gpu_options.allow_growth = True
-    config.gpu_options.polling_inactive_delay_msecs = 10
-    session = tf.compat.v1.Session(config=config)
+    # config = tf.compat.v1.ConfigProto()
+    # config.gpu_options.per_process_gpu_memory_fraction = 0.9
+    # config.gpu_options.allow_growth = True
+    # config.gpu_options.polling_inactive_delay_msecs = 10
+    # session = tf.compat.v1.Session(config=config)
     tf.app.run()
