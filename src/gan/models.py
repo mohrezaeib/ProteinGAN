@@ -7,9 +7,11 @@ from gan.protein.local_blast_summary import LocalBlastSummary
 from gan.protein.protein import Protein
 from gan.sngan.model import SNGAN
 from gan.wgan.model import WGAN
-
+import os
 
 def get_model(flags, properties, logdir, noise):
+    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
+
     if flags.model_type == "sngan":
         if "image" in flags.dataset:
             gan = SNGAN(Image(flags, properties, logdir), noise)

@@ -40,6 +40,8 @@ def main(_):
 
 
 def get_discriminator_results():
+    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
+
     properties = get_properties(FLAGS)
     logdir = setup_logdir(FLAGS, properties)
     noise = tf.placeholder(dtype=tf.float32, shape=[FLAGS.batch_size, FLAGS.z_dim])

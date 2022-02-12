@@ -75,11 +75,11 @@ def get_hooks(debug_cli, debug_ui):
     return hooks
 
 if __name__ == '__main__':
-    config = tf.compat.v1.ConfigProto()
+    config = tf.ConfigProto()
     config.gpu_options.per_process_gpu_memory_fraction = 0.9
     config.gpu_options.allow_growth = True
     config.gpu_options.polling_inactive_delay_msecs = 10
-    session = tf.compat.v1.Session(config=config)
+    session = tf.Session(config=config)
     os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
 
     tf.app.run()
