@@ -34,6 +34,8 @@ def main(_):
 
 
 def generate_sequences():
+    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
+
     properties = get_properties(FLAGS)
     logdir = setup_logdir(FLAGS, properties)
     tf.logging.info('Noise will have standard deviation of {}'.format(FLAGS.stddev))

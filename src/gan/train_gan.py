@@ -20,6 +20,8 @@ FLAGS = get_flags()
 def main(_, is_test=False, debug_cli=False, debug_ui=False):
     graph = tf.Graph()
     with graph.as_default():
+        os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
+
         tf.logging.set_verbosity(tf.logging.INFO)
         properties = get_properties(FLAGS)
         # Select model to train
@@ -60,6 +62,8 @@ def main(_, is_test=False, debug_cli=False, debug_ui=False):
 
 def get_hooks(debug_cli, debug_ui):
     hooks = []
+    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
+
     if debug_cli:
         cli_debug_hook = tf_debug.LocalCLIDebugHook()
         cli_debug_hook.add_tensor_filter("has_inf_or_nan", tf_debug.has_inf_or_nan)

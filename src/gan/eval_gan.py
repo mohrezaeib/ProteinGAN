@@ -31,6 +31,7 @@ def main(_):
 
 
 def raw_results():
+    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
     properties = get_properties(FLAGS)
     logdir = setup_logdir(FLAGS, properties)
     noise = tf.random.truncated_normal([FLAGS.batch_size, FLAGS.z_dim], stddev=0.5, dtype=tf.float32)
