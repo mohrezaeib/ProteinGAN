@@ -22,14 +22,14 @@ class LocalBlastSummary(BlastSummary):
         fasta = sequences_to_fasta(sequences, self.id_to_enzyme_class, escape=False, strip_zeros=True)
         print(f"sequences_to_fasta {fasta}")
         self.print_blast_results(sequences, fasta, "val")
-        
+
         sequences = self.print_blast_results(sequences, fasta, "train")
         self.add_updated_text_to_tensorboard(sequences)
 
     def print_blast_results(self, sequences, fasta, type):
         result, err = get_local_blast_results(self._summary_writer.get_logdir(), self.db_path+"_"+type, fasta)
         sequences, evalues, similarities, identities = update_sequences_with_blast_results(result, sequences)
-        print("print_blast_results:get_stats line 30 ", len(sequences), similarities, type)
+        print("print_blast_results: get_stats line 30 ", len(sequences), similarities, type)
         avg_similarities, s_max = self.get_stats(len(sequences), similarities, "{}/BLOMSUM45".format(type), np.max)
         avg_evalues, e_min = self.get_stats(len(evalues), evalues, "{}/Evalue".format(type), np.min)
         avg_identities, i_max = self.get_stats(len(identities), identities, "{}/Identity".format(type), np.max)
@@ -38,6 +38,8 @@ class LocalBlastSummary(BlastSummary):
         return sequences
 
     def get_stats(self, batch_size, similarities, name, f):
+        if len(similarities)==0:
+            return 0 ,0
         print('Line 39 similarity', similarities)
         avg = np.array(similarities).sum() / batch_size
         best_value = f(similarities)
