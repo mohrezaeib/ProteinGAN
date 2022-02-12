@@ -27,6 +27,7 @@ class LocalBlastSummary(BlastSummary):
         self.add_updated_text_to_tensorboard(sequences)
 
     def print_blast_results(self, sequences, fasta, type):
+        print(f"getting blast result of {self._summary_writer.get_logdir()},{ self.db_path+'_'+type }, {fasta}")
         result, err = get_local_blast_results(self._summary_writer.get_logdir(), self.db_path+"_"+type, fasta)
         sequences, evalues, similarities, identities = update_sequences_with_blast_results(result, sequences)
         print("print_blast_results: get_stats line 30 ", len(sequences), similarities, type)
@@ -39,6 +40,7 @@ class LocalBlastSummary(BlastSummary):
 
     def get_stats(self, batch_size, similarities, name, f):
         if len(similarities)==0:
+            print("Warning Similarity array is empty")
             return 0 ,0
         print('Line 39 similarity', similarities)
         avg = np.array(similarities).sum() / batch_size
