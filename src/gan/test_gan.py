@@ -2,7 +2,7 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-
+import os
 from absl import flags
 
 import tensorflow as tf
@@ -35,6 +35,8 @@ def main(_):
 
 
 def interpolate():
+    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
+
     properties = get_properties(FLAGS)
     logdir = setup_logdir(FLAGS, properties)
     noise = tf.placeholder(dtype=tf.float32, shape=[FLAGS.batch_size, FLAGS.z_dim])
@@ -53,6 +55,8 @@ def interpolate():
 
 
 def get_generated_seqs(model):
+    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
+
     if FLAGS.one_hot:
         generated_seqs = tf.squeeze(tf.argmax(model.fake_x, axis=-1))
     else:
@@ -61,9 +65,11 @@ def get_generated_seqs(model):
 
 
 if __name__ == '__main__':
-    # config = tf.compat.v1.ConfigProto()
-    # config.gpu_options.per_process_gpu_memory_fraction = 0.9
-    # config.gpu_options.allow_growth = True
-    # config.gpu_options.polling_inactive_delay_msecs = 10
-    # session = tf.compat.v1.Session(config=config)
+    config = tf.compat.v1.ConfigProto()
+    config.gpu_options.per_process_gpu_memory_fraction = 0.9
+    config.gpu_options.allow_growth = True
+    config.gpu_options.polling_inactive_delay_msecs = 10
+    session = tf.compat.v1.Session(config=config)
+    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
+
     tf.app.run()
