@@ -18,8 +18,11 @@ class LocalBlastSummary(BlastSummary):
         tf.logging.info("Running Local Blast thread for step {}".format(self.global_step))
         self.strip_zeros = True
         sequences = self.get_protein_sequences()
+        print(f"sequences {sequences}")
         fasta = sequences_to_fasta(sequences, self.id_to_enzyme_class, escape=False, strip_zeros=True)
+        print(f"sequences_to_fasta {fasta}")
         self.print_blast_results(sequences, fasta, "val")
+        
         sequences = self.print_blast_results(sequences, fasta, "train")
         self.add_updated_text_to_tensorboard(sequences)
 
