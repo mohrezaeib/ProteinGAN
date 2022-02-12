@@ -40,7 +40,7 @@ class LocalBlastSummary(BlastSummary):
 
     def get_stats(self, batch_size, similarities, name, f):
         if len(similarities)==0:
-            print("Warning Similarity array is empty")
+            print("-"*20 , "WARNING BLAST SIMILARITY IS EMPTY", "-"*20)
             return 0 ,0
         print('Line 39 similarity', similarities)
         avg = np.array(similarities).sum() / batch_size
